@@ -13,7 +13,11 @@
 #define SCL_GPIO 17
 #endif
 
-void bmp280_test(void *pvParamters)
+#if defined(CONFIG_IDF_TARGET_ESP32S2)
+#define APP_CPU_NUM PRO_CPU_NUM
+#endif
+
+void bmp280_test(void *pvParameters)
 {
     bmp280_params_t params;
     bmp280_init_default_params(&params);

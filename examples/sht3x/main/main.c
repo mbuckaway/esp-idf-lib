@@ -5,7 +5,7 @@
  * *periodic mode*. In *single shot* mode either low level or high level
  * functions are used.
  *
- * Harware configuration:
+ * Hardware configuration:
  *
  *    +-----------------+     +----------+
  *    |     ESP32 |     | SHT3x    |
@@ -35,6 +35,10 @@
 #define SCL_GPIO 17
 #endif
 
+#if defined(CONFIG_IDF_TARGET_ESP32S2)
+#define APP_CPU_NUM PRO_CPU_NUM
+#endif
+
 #define ADDR SHT3X_I2C_ADDR_GND
 
 static sht3x_t dev;
@@ -46,7 +50,7 @@ static sht3x_t dev;
  * efficiency reasons it uses *single shot* mode. In this example it uses the
  * high level function *sht3x_measure* to perform one measurement in each cycle.
  */
-void task(void *pvParamters)
+void task(void *pvParameters)
 {
     float temperature;
     float humidity;
@@ -72,7 +76,7 @@ void task(void *pvParamters)
  * measurement, waits for the results and fetches the results using separate
  * functions
  */
-void task(void *pvParamters)
+void task(void *pvParameters)
 {
     float temperature;
     float humidity;
@@ -106,7 +110,7 @@ void task(void *pvParamters)
  * seconds. It starts the SHT3x in periodic mode with 1 measurements per
  * second (*SHT3X_PERIODIC_1MPS*).
  */
-void task(void *pvParamters)
+void task(void *pvParameters)
 {
     float temperature;
     float humidity;

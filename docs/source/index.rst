@@ -112,6 +112,8 @@ Humidity & temperature sensors
    groups/lm75
    groups/bme680
    groups/mcp9808
+   groups/mcp960x
+   groups/tsys01
    
 Pressure sensors
 ================
@@ -140,6 +142,7 @@ Power/Current monitors
    :maxdepth: 1
    
    groups/ina219
+   groups/ina260
    groups/ina3221
 
 Magnetic sensors
@@ -158,6 +161,7 @@ Light sensors
    groups/bh1750
    groups/tsl2561
    groups/tsl4531
+   groups/tsl2591
 
 GPIO expanders
 ==============
@@ -181,6 +185,7 @@ Other
    groups/ultrasonic
    groups/encoder
    groups/tda74xx
+   groups/rda5807m
    groups/tca9548
    groups/led_strip
    

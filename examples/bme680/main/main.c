@@ -10,7 +10,11 @@
 #define PORT 0
 #define ADDR BME680_I2C_ADDR_0
 
-void bme680_test(void *pvParamters)
+#if defined(CONFIG_IDF_TARGET_ESP32S2)
+#define APP_CPU_NUM PRO_CPU_NUM
+#endif
+
+void bme680_test(void *pvParameters)
 {
     bme680_t sensor;
     memset(&sensor, 0, sizeof(bme680_t));
@@ -27,7 +31,7 @@ void bme680_test(void *pvParamters)
     // Change the IIR filter size for temperature and pressure to 7.
     bme680_set_filter_size(&sensor, BME680_IIR_SIZE_7);
 
-    // Change the heater profile 0 to 200 degree Celcius for 100 ms.
+    // Change the heater profile 0 to 200 degree Celsius for 100 ms.
     bme680_set_heater_profile(&sensor, 0, 200, 100);
     bme680_use_heater_profile(&sensor, 0);
 

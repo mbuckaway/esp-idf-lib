@@ -13,9 +13,14 @@
 #define SDA_GPIO 16
 #define SCL_GPIO 17
 #endif
+
+#if defined(CONFIG_IDF_TARGET_ESP32S2)
+#define APP_CPU_NUM PRO_CPU_NUM
+#endif
+
 #define OVERSAMPLING_RATIO MS5611_OSR_1024
 
-void ms5611_test(void *pvParamters)
+void ms5611_test(void *pvParameters)
 {
     ms5611_t dev;
     memset(&dev, 0, sizeof(ms5611_t));
